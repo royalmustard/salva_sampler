@@ -20,12 +20,12 @@ fn main() {
     {
         scale = Vector3::new(u_scale, u_scale, u_scale);
     }
-
+    println!("Loading object file");
     let mesh = gyptlib::trimesh_from_obj(&obj_filename).scaled(&scale);
     
-    
+    println!("Sampling");
     let sample = salva3d::sampling::shape_volume_ray_sample(&mesh, particle_radius).unwrap();
-
+    println!("Saving");
     gyptlib::save_salva_sample(&output_filename, sample);
 }
 
